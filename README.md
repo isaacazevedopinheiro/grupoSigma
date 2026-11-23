@@ -99,7 +99,7 @@ Saída esperada: 3 turnos; Warden termina ativo e sincronizado, Assassin e Overc
 
 **Prompt usado (Copilot/ChatGPT):**
 
-> "Em Java 21, gere apenas o esqueleto do núcleo OOP da Specter League: uma classe abstrata SpecterIA com energia privada, flag de sincronia e uma MemoriaDeCombate por composição, o método abstrato executarTurno(), três subclasses (Warden, Assassin, Overclock) e um Main com List<SpecterIA> demonstrando polimorfismo. Não crie um jogo completo, não use switch por classe e explique onde fica cada conceito."
+> "Em Java 21, gere apenas o esqueleto do núcleo OOP da Specter League: uma classe abstrata `SpecterIA` com energia privada, flag de sincronia e uma `MemoriaDeCombate` por composição, o método abstrato `executarTurno()`, três subclasses (Warden, Assassin, Overclock) e um `Main` com `List<SpecterIA>` demonstrando polimorfismo. Não crie um jogo completo, não use switch por classe e explique onde fica cada conceito."
 
 **Ajuste feito pelo grupo:** a IA sugeriu inicialmente `SpecterIA extends MemoriaDeCombate`. Corrigimos para **composição** (`private final MemoriaDeCombate memoria` + `Objects.requireNonNull`), porque memória é histórico que o specter *tem*, não um tipo que ele *é*. Também centralizamos a escrita na memória via `registrarAcao()` e transformamos o `DESYNC` em estado protegido. Revisamos cada `System.out` antes de commitar — nenhum segredo ou token foi incluído.
 
