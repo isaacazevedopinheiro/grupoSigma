@@ -1,0 +1,51 @@
+classDiagram
+    class SpecterIA {
+        <<abstract>>
+        -int energia
+        -boolean sincronizado
+        -MemoriaDeCombate memoria
+        +executarTurno()* void
+        +receberDano(int) void
+        +estaAtivo() boolean
+        +estaSincronizado() boolean
+        +getMemoria() MemoriaDeCombate
+        #gastarEnergia(int) boolean
+        #recuperarEnergia(int) void
+        #registrarAcao(String) void
+        #marcarDesync(String) void
+        #estabilizarSincronia() void
+    }
+
+    class MemoriaDeCombate {
+        -List~String~ acoes
+        +registrar(String) void
+        +getAcoes() List~String~
+        +getUltimaAcao() String
+        +getTotalAcoes() int
+    }
+
+    class WardenSpecter {
+        +executarTurno() void
+    }
+
+    class AssassinSpecter {
+        -int combosExecutados
+        +getCombosExecutados() int
+        +executarTurno() void
+    }
+
+    class OverclockSpecter {
+        -int aceleracoes
+        +getAceleracoes() int
+        +executarTurno() void
+    }
+
+    class Main {
+        +main(String[] args) void
+    }
+
+    SpecterIA <|-- WardenSpecter
+    SpecterIA <|-- AssassinSpecter
+    SpecterIA <|-- OverclockSpecter
+    SpecterIA *-- MemoriaDeCombate : TEM UMA (composição)
+    Main ..> SpecterIA : Lista polimórfica
