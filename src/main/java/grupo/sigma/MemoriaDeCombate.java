@@ -1,31 +1,25 @@
 package grupo.sigma;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public class MemoriaDeCombate {
-    private List<String> acoes;
+    private final List<String> acoes = new ArrayList<>();
 
-    public void Registrar(String acao){
-        acoes.add(acao);
+    public void registrar(String acao) {
+        acoes.add(Objects.requireNonNull(acao, "acao não pode ser nula"));
     }
 
     public List<String> getAcoes() {
-        return acoes;
+        return List.copyOf(acoes);
     }
 
-    public String getUltimaAcao(){
-        return acoes.getLast();
+    public String getUltimaAcao() {
+        return acoes.isEmpty() ? "" : acoes.get(acoes.size() - 1);
     }
 
-
-    public Integer getTotalAcoes(){
-        Integer total = 0;
-        for (String acoe : acoes) {
-            total++;
-        }
-
-        return total;
+    public int getTotalAcoes() {
+        return acoes.size();
     }
-
-
 }

@@ -89,8 +89,8 @@ Com JDK 21 (o Maven do IntelliJ também funciona com `mvn compile`):
 
 ```powershell
 New-Item -ItemType Directory -Force target\classes
-javac -encoding UTF-8 -d target\classes src\main\java\com\sptech\specterleague\*.java
-java -Dfile.encoding=UTF-8 -cp target\classes com.sptech.specterleague.Main
+javac -encoding UTF-8 -d target\classes src\main\java\grupo\sigma\*.java src\main\java\grupo\sigma\specter\*.java
+java "-Dfile.encoding=UTF-8" -cp target\classes grupo.sigma.Main
 ```
 
 Saída esperada: 3 turnos; Warden termina ativo e sincronizado, Assassin e Overclock entram em `DESYNC` ao ficar sem energia.
